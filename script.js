@@ -64,19 +64,19 @@ questionForm.addEventListener('submit', (e) => {
         (accumulator, currentValue) => accumulator + currentValue,
         initialValue);
     console.log(scoreTotal)
-    if(scoreTotal === 20){
+    if(scoreTotal >= 50){
         console.log('IM RICK BITCH!')
         //callback function
-    }else if (scoreTotal >= 16 && scoreTotal < 20){
+    }else if (scoreTotal >= 40 && scoreTotal < 50){
         console.log('I am Summer and dont talk to me!')
         //callback function
-    }else if (scoreTotal < 16 && scoreTotal >= 12){
+    }else if (scoreTotal < 40 && scoreTotal >= 30){
         console.log("I- I guess I am M-Morty")
         //callback function
-    }else if(scoreTotal < 12 && scoreTotal >= 8){
+    }else if(scoreTotal < 30 && scoreTotal >= 20){
         console.log('Hi I am mom or I mean Beth!')
         //callback function
-    } else if(scoreTotal < 8){
+    } else if(scoreTotal < 20){
         console.log('oh man, I a Jerry...')
         //callback function
     }
