@@ -1,4 +1,5 @@
 ////////// 
+
 // const renderImage = document.querySelector('#')
 // const popUpGender = document.querySelector('#')
 // const popUpName = document.querySelector('#')
