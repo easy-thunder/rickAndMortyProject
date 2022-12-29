@@ -1,11 +1,11 @@
 ////////// 
-const renderImage = document.querySelector('#')
-const popUpGender = document.querySelector('#')
-const popUpName = document.querySelector('#')
-const popUpSpecies = document.querySelector('#')
-const popUpStatus = document.querySelector('#')
+const characterList = document.querySelector('#character_list')
+// const popUpGender = document.querySelector('#')
+// const popUpName = document.querySelector('#')
+// const popUpSpecies = document.querySelector('#')
+// const popUpStatus = document.querySelector('#')
 
-
+let characterData;
 
 
 
@@ -13,16 +13,27 @@ const popUpStatus = document.querySelector('#')
 function getCharacters(){
     fetch('http://localhost:3000/characters')
     .then(r=>r.json())
-    .then(characterData => characterData.forEach(character => renderCharacter(character)))
+    .then(json => {characterData = json;
+        characterData.forEach(data => {
+        renderCharacter(data);
+        
+        },
+        
+        )
+})
 }
 getCharacters()
 
 function renderCharacter(character){
-    renderImage.src = character.image;
-    renderImage.addEventListener('mouseover', ()=> {
-    console.log("I've been mouseOvered")
+    
+const characterImage = document.createElement('img')
+    characterImage.src = character.image;
+    characterList.append(characterImage)
+    // console.log(characterData[2]);
+    // renderImage.addEventListener('mouseover', ()=> {
+    // console.log("I've been mouseOvered")
     // characterPopUp(character)
-})
+// })
 }
 
 function characterPopUp(character){

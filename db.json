@@ -1,4 +1,12 @@
 {
+    "user": [
+        {
+        "id": " ",
+        "name": " ",
+        "character": " ",
+        "status": " "
+    }
+        ],
     "characters": [
             {
             "id": 1,
@@ -332,7 +340,5 @@
             }
         ]
 
-    "history": [
-        "history": "x"
-        ]
+   
 }
