@@ -1,10 +1,12 @@
 ////////// 
 
-// const renderImage = document.querySelector('#')
-// const popUpGender = document.querySelector('#')
-// const popUpName = document.querySelector('#')
-// const popUpSpecies = document.querySelector('#')
-// const popUpStatus = document.querySelector('#')
+
+const characterList = document.querySelector('#character_list');
+characterList.classList = "slateBackground", "width"
+
+characterList.classList = "displayFlex"
+
+const breakLine = document.createElement('br')
 
 let characterData;
 
@@ -12,7 +14,7 @@ let characterData;
 
 
 function getCharacters(){
-    fetch('http://localhost:3000/characters')
+    fetch('http://localhost:3000/results?_limit=5')
     .then(r=>r.json())
     .then(json => {characterData = json;
         characterData.forEach(data => {
@@ -30,18 +32,35 @@ function renderCharacter(character){
 const characterImage = document.createElement('img')
     characterImage.src = character.image;
     characterList.append(characterImage)
-    // console.log(characterData[2]);
-    // renderImage.addEventListener('mouseover', ()=> {
-    // console.log("I've been mouseOvered")
-    // characterPopUp(character)
-// })
+    characterImage.addEventListener('mouseover', (e)=> {
+    characterPopUp(character, characterImage)
+})
 }
 
-function characterPopUp(character){
-    popUpName = character.name
-    popUpStatus = character.status
-    popUpSpecies = character.species
-    popUpGender = character.gender
+function characterPopUp(character, image){
+    let popUpName = document.createElement('h2')
+    popUpName.classList = "shadow"
+    let popUpStatus = document.createElement('h4')
+    let popUpSpecies = document.createElement('h4')
+    let popUpGender = document.createElement('h4')
+    let card = document.createElement('div')
+    let popUpImage = document.createElement('img')
+    
+    
+    popUpImage.src = character.image
+    popUpName.textContent = character.name
+    popUpName.style.textShadow = ""
+    popUpStatus.textContent = `Living?: ${character.status}`
+    popUpSpecies.textContent = `species: ${character.species}`
+    popUpGender.textContent = `gender: ${character.gender}`
+    popUpName.append(breakLine, popUpImage, popUpStatus, popUpSpecies, popUpGender)
+    card.append(popUpName)
+    console.log(card);
+    console.log(image);
+    image.replaceWith(card)
+    card.addEventListener("mouseout", e =>{
+        card.replaceWith(image)
+    })
 }
 
 
