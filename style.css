@@ -1,5 +1,5 @@
 *{
-    border: solid red 1px;
+    /* border: solid red 1px; */
     background-image: linear-gradient(to bottom right, rgb(55, 74, 105), rgb(25, 248, 14));
 }
 
@@ -37,12 +37,10 @@
 }
 .popOut{
 text-align: center;
-border: grey solid 1px;
+border: rgb(80, 79, 79) solid 1px;
 padding: 1rem;
-width: 15rem;
-height: 25rem;
 display: inline-grid;
-margin: 1rem 2rem;
+margin: 1rem 2rem; 
 box-shadow: 3px 4px #e04b52;
 z-index: 1;
 }
