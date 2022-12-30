@@ -5,6 +5,9 @@
     "next": "https://rickandmortyapi.com/api/character?page=2",
     "prev": null
     },
+    "history":{
+        
+    },
     "results": [
     {
     "id": 1,
