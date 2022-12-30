@@ -1,8 +1,33 @@
 *{
     /* border: solid red 1px; */
+    
+}
+body{
     background-image: linear-gradient(to bottom right, rgb(55, 74, 105), rgb(25, 248, 14));
 }
+.title{
+    align-content: center;
+    width: 20rem;
+    height: 5rem;
+    margin: 1px;
+    z-index: 2;
+} 
+h1 {
+    text-align: center;
+    margin-left: 500px;
+    margin-right: 500px;
+    height: 5rem;
+    font-family:fantasy;
+    font-size: xx-large;
+    color: rgb(33, 168, 218);
+    animation: mymove 5s infinite;
 
+
+}
+
+@keyframes mymove {
+50% {text-shadow: 10px 20px 30px rgb(255, 251, 0);}
+}
 .center{
     text-align: center;
 }
@@ -10,7 +35,7 @@
     text-shadow: 2px 0px 1px rgb(89, 199, 53);
 }
 .width50{
-    width: 49%;
+    width: 49.6%;
 } 
 .floatRight{
     float: right
@@ -41,6 +66,10 @@ border: rgb(80, 79, 79) solid 1px;
 padding: 1rem;
 display: inline-grid;
 margin: 1rem 2rem; 
-box-shadow: 3px 4px #e04b52;
+box-shadow: 3px 4px #0520a7;
 z-index: 1;
+}
+#history{
+    border: solid rgb(62, 180, 226) 2px;
+    
 }
