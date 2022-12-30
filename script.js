@@ -1,18 +1,13 @@
-////////// 
+////////// getting constants from html and adding classes/////////////////
 
 
 const characterList = document.querySelector('#character_list');
 characterList.classList = "slateBackground", "width"
-
-characterList.classList = "displayFlex"
-
+characterList.classList = "displayFlex"//note for some reason when I added these together they did not work//
+const episodeList = document.querySelector('.episodes')
 const breakLine = document.createElement('br')
-
 let characterData;
-
-
-
-
+// retrieving characters from json//
 function getCharacters(){
     fetch('http://localhost:3000/results?_limit=5')
     .then(r=>r.json())
@@ -26,18 +21,19 @@ function getCharacters(){
 })
 }
 getCharacters()
-
+// places images along image bar//
 function renderCharacter(character){
-    
 const characterImage = document.createElement('img')
     characterImage.src = character.image;
     characterList.append(characterImage)
+    //this is where the hoverOver function is/////
     characterImage.addEventListener('mouseover', (e)=> {
     characterPopUp(character, characterImage)
 })
 }
-
+/// on hoverOver of image will display details about character///
 function characterPopUp(character, image){
+    // defining the elements that go in the pop-up card//
     let popUpName = document.createElement('h2')
     popUpName.classList = "shadow"
     let popUpStatus = document.createElement('h4')
@@ -46,31 +42,54 @@ function characterPopUp(character, image){
     let card = document.createElement('div')
     card.classList = "popOut"
     let popUpImage = document.createElement('img')
+    let episodeButton = document.createElement('button')
+    episodeButton.textContent = `${character.name}'s episode's`
+    episodeButton.style.alignSelf = "center"
+    episodeButton.style.color = "blue"
+    episodeButton.style.backgroundColor = "yellow"
+    episodeButton.style.cursor = "pointer"
     
-    
+    // connect popup elements with the json//
     popUpImage.src = character.image
     popUpName.textContent = character.name
-    popUpName.style.textShadow = ""
     popUpStatus.textContent = `Living?: ${character.status}`
     popUpSpecies.textContent = `species: ${character.species}`
     popUpGender.textContent = `gender: ${character.gender}`
-    popUpName.append(breakLine, popUpImage, popUpStatus, popUpSpecies, popUpGender)
+    //append elements to name (wouldn't work with appending everything to card) and appended the name to the card////
+    popUpName.append( episodeButton, popUpImage, popUpStatus, popUpSpecies, popUpGender, )
     card.append(popUpName)
-
     image.replaceWith(card)
+    // add an event listener for mousingOut to just display the image//
     card.addEventListener("mouseout", e =>{
         card.replaceWith(image)
     })
+    // this deletes any previous episodes and gets the new episodes
+    episodeButton.addEventListener('click', e=> {postEpisodes(character)
+    episodeList.innerHTML=""
+        
+    })
+
 }
 
+// the post for posting the episodes from json to episodes in html//
+function postEpisodes(character){
+    fetch(`http://localhost:3000/results/${character.id}`)
+    .then(r=>r.json())
+    .then(cartoon => cartoon.episode.forEach(episode=>{renderEpisodes(episode)
+    
+    }))
+}
+// renders the episode to dom note that the link isn't working so instead I sliced the last part of the link to only append the episode.
+function renderEpisodes(episode){
+    const episodes = document.createElement("li")
 
-
-
-
-
-
-
-
+    episodes.textContent = episode
+    alteredEpisode = document.createElement('li')
+    alteredEpisode.textContent = episodes.textContent.slice(episodes.textContent.length - 10)
+    
+    episodeList.append(alteredEpisode);
+    console.log(episodes.textContent);
+}
 
 ///////////////////////////////////////////
 /// which character are you submit form ///
