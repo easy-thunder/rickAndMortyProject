@@ -1,15 +1,23 @@
 *{
     border: solid red 1px;
-    background-image:linear-gradient(to bottom right, rgb(159, 228, 100), rgb(94, 114, 42));
-
+    background-image: linear-gradient(to bottom right, rgb(55, 74, 105), rgb(25, 248, 14));
 }
+
 .center{
     text-align: center;
 }
 .shadow{
     text-shadow: 2px 0px 1px rgb(89, 199, 53);
 }
-
+.width50{
+    width: 49%;
+} 
+.floatRight{
+    float: right
+}
+.floatLeft{
+    float: left
+} 
 .width {
     width: 90%;
     height: 300px;
@@ -27,5 +35,14 @@
     height: 275px;
     margin: 7px;
 }
-
-
+.popOut{
+text-align: center;
+border: grey solid 1px;
+padding: 1rem;
+width: 15rem;
+height: 25rem;
+display: inline-grid;
+margin: 1rem 2rem;
+box-shadow: 3px 4px #e04b52;
+z-index: 1;
+}

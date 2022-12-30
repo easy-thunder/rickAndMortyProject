@@ -44,6 +44,7 @@ function characterPopUp(character, image){
     let popUpSpecies = document.createElement('h4')
     let popUpGender = document.createElement('h4')
     let card = document.createElement('div')
+    card.classList = "popOut"
     let popUpImage = document.createElement('img')
     
     
@@ -55,8 +56,7 @@ function characterPopUp(character, image){
     popUpGender.textContent = `gender: ${character.gender}`
     popUpName.append(breakLine, popUpImage, popUpStatus, popUpSpecies, popUpGender)
     card.append(popUpName)
-    console.log(card);
-    console.log(image);
+
     image.replaceWith(card)
     card.addEventListener("mouseout", e =>{
         card.replaceWith(image)
