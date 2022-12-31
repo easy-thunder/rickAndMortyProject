@@ -113,40 +113,47 @@ questionForm.addEventListener('submit', (e) => {
     let scoreArray = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
     
     
-    
     const initialValue = 0;
     let scoreTotal = scoreArray.reduce(
         (accumulator, currentValue) => accumulator + currentValue,
-        initialValue);
+        initialValue
+        );
 
-    console.log(scoreTotal)
+    
     let userName = e.target.name.value;
     let result;
-    console.log(userName)
+    
 
     if(scoreTotal >= 50){
-        console.log('IM RICK BITCH!')
         result = 'Rick Sanchez';
         
     }else if (scoreTotal < 50 && scoreTotal >= 40){
-        console.log('I am Summer and dont talk to me!')
         result = 'Summer Smith';
         
     }else if (scoreTotal < 40 && scoreTotal >= 30){
-        console.log("I- I guess I am M-Morty")
         result = 'Morty Smith';
         //callback function
     }else if(scoreTotal < 30 && scoreTotal >= 20){
-        console.log('Hi I am mom or I mean Beth!')
         result = 'Beth Smith';
         //callback function
     } else if(scoreTotal < 20){
-        console.log('oh man, I a Jerry...')
         result = 'Jerry Smith';
         //callback function
     }
     historyTable(userName, result)
+    renderCard(userName, result)
 })
+
+
+
+///////////////////////////////////////////
+//////// rendering history form ///////////
+///////////////////////////////////////////
+
+
+
+
+
 
 
 ///////////////////////////////////////////
@@ -192,3 +199,26 @@ satisfiedDropdown.addEventListener('change', (e) => {
     let satisfiedChange = document.getElementById(`${k}`);
     satisfiedChange.textContent = result;
 })
+
+
+///////////////////////////////////////////
+/////////// Render Card function //////////
+///////////////////////////////////////////
+
+function renderCard(userName, character) {
+    let h2 = document.querySelector('#user-Name');
+    let img = document.querySelector('#character-select');
+    let h3 = document.querySelector('#character-bio');
+
+    h2.textContent = `${userName}, you are a ${character}`;
+    let characterId;
+    for(const element of characterData){
+        //console.log(element.name)
+        if(character === element.name){
+            img.src = element.image;
+            h3.textContent = element.bio;
+        }
+    }
+
+}
+
