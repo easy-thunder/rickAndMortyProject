@@ -1,7 +1,4 @@
-*{
-    /* border: solid red 1px; */
-    
-}
+
 body{
     background-image: linear-gradient(to bottom right, rgb(55, 74, 105), rgb(25, 248, 14));
 }
@@ -69,7 +66,16 @@ margin: 1rem 2rem;
 box-shadow: 3px 4px #0520a7;
 z-index: 1;
 }
-/* #history{
+#history{
     border: solid rgb(62, 180, 226) 2px;
+    background-color: #1c3de438;
+    text-align: center;
+}
 
-} */
+#history-list th{
+    border: solid 1px black;
+}
+
+#history-list td{
+    border: solid 1px black;
+}

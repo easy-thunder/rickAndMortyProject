@@ -94,6 +94,8 @@ function renderEpisodes(episode){
 ///////////////////////////////////////////
 /// which character are you submit form ///
 ///////////////////////////////////////////
+
+
 const questionForm =  document.querySelector('#question-form');
 questionForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -109,26 +111,84 @@ questionForm.addEventListener('submit', (e) => {
     let q9 = parseInt(e.target.question9.value);
     let q10 = parseInt(e.target.question10.value);
     let scoreArray = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
+    
+    
+    
     const initialValue = 0;
     let scoreTotal = scoreArray.reduce(
         (accumulator, currentValue) => accumulator + currentValue,
         initialValue);
+
     console.log(scoreTotal)
+    let userName = e.target.name.value;
+    let result;
+    console.log(userName)
+
     if(scoreTotal >= 50){
         console.log('IM RICK BITCH!')
-        //callback function
-    }else if (scoreTotal >= 40 && scoreTotal < 50){
+        result = 'Rick Sanchez';
+        
+    }else if (scoreTotal < 50 && scoreTotal >= 40){
         console.log('I am Summer and dont talk to me!')
-        //callback function
+        result = 'Summer Smith';
+        
     }else if (scoreTotal < 40 && scoreTotal >= 30){
         console.log("I- I guess I am M-Morty")
+        result = 'Morty Smith';
         //callback function
     }else if(scoreTotal < 30 && scoreTotal >= 20){
         console.log('Hi I am mom or I mean Beth!')
+        result = 'Beth Smith';
         //callback function
     } else if(scoreTotal < 20){
         console.log('oh man, I a Jerry...')
+        result = 'Jerry Smith';
         //callback function
     }
+    historyTable(userName, result)
+})
+
+
+///////////////////////////////////////////
+//////// updating history form ////////////
+///////////////////////////////////////////
+let i = 1;
+function historyTable(name, character) {
     
+
+    const trNew = document.createElement('tr');
+    const tdNum = document.createElement('td');
+    const tdName = document.createElement('td');
+    const tdReview = document.createElement('td')
+    const tdCharacter = document.createElement('td');
+
+
+    tdNum.textContent = i;
+    tdName.textContent = name;
+    tdCharacter.textContent = character;
+    tdReview.id = i;
+    
+
+    const table = document.getElementById('history-list');
+
+    table.append(trNew);
+    trNew.append(tdNum, tdName, tdCharacter, tdReview);
+
+    
+    return i = i + 1;
+
+}
+
+///////////////////////////////////////////
+/////////// satisfied dropdown ////////////
+///////////////////////////////////////////
+
+
+const satisfiedDropdown = document.querySelector('#satisfied');
+satisfiedDropdown.addEventListener('change', (e) => {
+    let k = i - 1;
+    console.log('change');
+    let result = document.querySelector('#review').value;
+    let satisfiedChange = document.getElementById(`${k}`);
+    satisfiedChange.textContent = result;
 })
