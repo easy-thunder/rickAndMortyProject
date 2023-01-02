@@ -8,10 +8,10 @@ const episodeList = document.querySelector('.episodes')
 const breakLine = document.createElement('br')
 let characterData;
 // retrieving characters from json//
-function getCharacters( episode = null, getAddition = `results/?_limit=5`, render = renderCharacter, ){
+function getCharacters( episode = null, getAddition = `results/?_limit=5`, render = renderCharacter){
     fetch(`http://localhost:3000/${getAddition}`)
     .then(r=>r.json())
-    .then(characterResults => {characterData = characterResults ;
+    .then(characterResults => {characterData = characterResults;
         if(episode === null){
             characterData.forEach(data => 
             render(data)
