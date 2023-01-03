@@ -100,12 +100,12 @@ questionForm.addEventListener('submit', (e) => {
     let q10 = parseInt(e.target.question10.value);
     let scoreArray = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
     
-    
     const initialValue = 0;
     let scoreTotal = scoreArray.reduce(
         (accumulator, currentValue) => accumulator + currentValue,
         initialValue
         );
+        console.log(scoreTotal);
 
     
     let userName = e.target.name.value;
@@ -128,12 +128,22 @@ questionForm.addEventListener('submit', (e) => {
         result = 'Jerry Smith';
         //callback function
     }
+    postHistory(userName, result, )
     historyTable(userName, result)
     renderCard(userName, result)
-    console.log(initialValue);
-    console.log(accumulator);
+
 })
 
+// function postHistory(result){
+//     fetch(`http://localhost:3000/history`, {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//             accept: "application/json"
+//         },
+//         body:
+//     })
+// }
 
 
 ///////////////////////////////////////////
@@ -151,8 +161,10 @@ questionForm.addEventListener('submit', (e) => {
 ///////////////////////////////////////////
 let i = 1;
 function historyTable(name, character) {
-    
-
+    if(character === undefined){
+        alert('In order to see your character you must fill out the whole form')
+    }
+else{
     const trNew = document.createElement('tr');
     const tdNum = document.createElement('td');
     const tdName = document.createElement('td');
@@ -173,7 +185,7 @@ function historyTable(name, character) {
 
     
     return i = i + 1;
-
+}
 }
 
 ///////////////////////////////////////////
