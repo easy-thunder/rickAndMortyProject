@@ -8,18 +8,21 @@ const episodeList = document.querySelector('.episodes')
 const breakLine = document.createElement('br')
 let characterData;
 // retrieving characters from json//
-function getCharacters(){
-    fetch('http://localhost:3000/results?_limit=5')
+function getCharacters( episode = null, getAddition = `results/?_limit=5`, render = renderCharacter){
+    fetch(`http://localhost:3000/${getAddition}`)
     .then(r=>r.json())
-    .then(json => {characterData = json;
-        characterData.forEach(data => {
-        renderCharacter(data);
-        
-        },
-        
-        )
+    .then(characterResults => {characterData = characterResults;
+        if(episode === null){
+            characterData.forEach(data => 
+            render(data)
+        )}
+        else{
+            characterData[episode].forEach(data => render(data))
+            };
 })
 }
+// characterData.forEach(data => {
+//     renderCharacter(data);
 getCharacters()
 // places images along image bar//
 function renderCharacter(character){
@@ -56,7 +59,7 @@ function characterPopUp(character, image){
     popUpSpecies.textContent = `species: ${character.species}`
     popUpGender.textContent = `gender: ${character.gender}`
     //append elements to name (wouldn't work with appending everything to card) and appended the name to the card////
-    popUpName.append( episodeButton, popUpImage, popUpStatus, popUpSpecies, popUpGender, )
+    popUpName.append(episodeButton, breakLine, popUpImage, popUpStatus, popUpSpecies, popUpGender)
     card.append(popUpName)
     image.replaceWith(card)
     // add an event listener for mousingOut to just display the image//
@@ -64,21 +67,14 @@ function characterPopUp(character, image){
         card.replaceWith(image)
     })
     // this deletes any previous episodes and gets the new episodes
-    episodeButton.addEventListener('click', e=> {postEpisodes(character)
+    episodeButton.addEventListener('click', e=> {getCharacters("episode", `results/${character.id}` , renderEpisodes)
     episodeList.innerHTML=""
         
     })
 
 }
 
-// the post for posting the episodes from json to episodes in html//
-function postEpisodes(character){
-    fetch(`http://localhost:3000/results/${character.id}`)
-    .then(r=>r.json())
-    .then(cartoon => cartoon.episode.forEach(episode=>{renderEpisodes(episode)
-    
-    }))
-}
+
 // renders the episode to dom note that the link isn't working so instead I sliced the last part of the link to only append the episode.
 function renderEpisodes(episode){
     const episodes = document.createElement("li")
