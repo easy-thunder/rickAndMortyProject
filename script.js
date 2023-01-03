@@ -120,18 +120,33 @@ questionForm.addEventListener('submit', (e) => {
         
     }else if (scoreTotal < 40 && scoreTotal >= 30){
         result = 'Morty Smith';
-        //callback function
+        
     }else if(scoreTotal < 30 && scoreTotal >= 20){
         result = 'Beth Smith';
-        //callback function
+        
     } else if(scoreTotal < 20){
         result = 'Jerry Smith';
-        //callback function
+        
     }
     postHistory(userName, result, )
     historyTable(userName, result)
     renderCard(userName, result)
 
+    e.target.reset();
+})
+
+///////////////////////////////////////////
+//////// fetching history info ////////////
+///////////////////////////////////////////
+let historyData;
+let i;
+fetch('http://localhost:3000/history')
+.then(res => res.json())
+.then(json => {
+    historyData = json,
+    historyData.forEach(renderHistory)
+    i = ++historyData.length;
+    console.log(i)
 })
 
 // function postHistory(result){
@@ -151,6 +166,25 @@ questionForm.addEventListener('submit', (e) => {
 ///////////////////////////////////////////
 
 
+function renderHistory(data){
+    
+
+    const trNew = document.createElement('tr');
+    const tdNum = document.createElement('td');
+    const tdName = document.createElement('td');
+    const tdReview = document.createElement('td');
+    const tdCharacter = document.createElement('td');
+
+    tdCharacter.textContent = data.character;
+    tdNum.textContent = data.id;
+    tdName.textContent = data.user;
+    tdReview.textContent = data.review;
+
+    const table = document.getElementById('history-list');
+
+    table.append(trNew);
+    trNew.append(tdNum, tdName, tdCharacter, tdReview);
+}
 
 
 
@@ -159,12 +193,13 @@ questionForm.addEventListener('submit', (e) => {
 ///////////////////////////////////////////
 //////// updating history form ////////////
 ///////////////////////////////////////////
-let i = 1;
-function historyTable(name, character) {
-    if(character === undefined){
-        alert('In order to see your character you must fill out the whole form')
-    }
-else{
+
+
+function historyTable(name, characterSelect) {
+    if(characterSelect === undefined){
+        alert('In Order to see your character, please answer all questions')
+    }else{
+
     const trNew = document.createElement('tr');
     const tdNum = document.createElement('td');
     const tdName = document.createElement('td');
@@ -174,7 +209,7 @@ else{
 
     tdNum.textContent = i;
     tdName.textContent = name;
-    tdCharacter.textContent = character;
+    tdCharacter.textContent = characterSelect;
     tdReview.id = i;
     
 
@@ -183,9 +218,16 @@ else{
     table.append(trNew);
     trNew.append(tdNum, tdName, tdCharacter, tdReview);
 
-    
+
+    let postObj = {
+        character: characterSelect,
+        user: name,
+        review: "",
+    }
+    console.log(postObj)
+    getPost(postObj)
     return i = i + 1;
-}
+    }
 }
 
 ///////////////////////////////////////////
@@ -200,6 +242,12 @@ satisfiedDropdown.addEventListener('change', (e) => {
     let result = document.querySelector('#review').value;
     let satisfiedChange = document.getElementById(`${k}`);
     satisfiedChange.textContent = result;
+
+    let patchObj = {
+        review: result
+    }
+
+    getPatch(k, patchObj)
 })
 
 
@@ -216,9 +264,10 @@ function renderCard(userName, character) {
     let h2 = document.querySelector('#user-Name');
     let img = document.querySelector('#character-select');
     let h3 = document.querySelector('#character-bio');
-
+    console.log(userName, character)
     h2.textContent = `${userName}, you are a ${character}`;
     let characterId;
+    console.log(characterData)
     for(const element of characterData){
         //console.log(element.name)
         if(character === element.name){
@@ -229,3 +278,36 @@ function renderCard(userName, character) {
 
 }
 
+
+
+///////////////////////////////////////////
+/////////// Post function /////////////////
+///////////////////////////////////////////
+
+function getPost(obj) {
+    fetch('http://localhost:3000/history', {
+        method: 'POST',
+        headers: {
+            'Content-Type': "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify(obj)
+    })
+    .then(res => res.json())
+}
+
+///////////////////////////////////////////
+/////////// Patch function ////////////////
+///////////////////////////////////////////
+
+function getPatch(id, obj) {
+    fetch(`http://localhost:3000/history/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+        },
+        body: JSON.stringify(obj) 
+    })
+    .then(res => res.json())
+}
