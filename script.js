@@ -128,7 +128,6 @@ questionForm.addEventListener('submit', (e) => {
         result = 'Jerry Smith';
         
     }
-    postHistory(userName, result, )
     historyTable(userName, result)
     renderCard(userName, result)
 
@@ -149,16 +148,6 @@ fetch('http://localhost:3000/history')
     console.log(i)
 })
 
-// function postHistory(result){
-//     fetch(`http://localhost:3000/history`, {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//             accept: "application/json"
-//         },
-//         body:
-//     })
-// }
 
 
 ///////////////////////////////////////////
