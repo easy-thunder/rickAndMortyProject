@@ -130,6 +130,8 @@ questionForm.addEventListener('submit', (e) => {
     }
     historyTable(userName, result)
     renderCard(userName, result)
+    console.log(initialValue);
+    console.log(accumulator);
 })
 
 
