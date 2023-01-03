@@ -7,22 +7,14 @@ characterList.classList = "displayFlex"//note for some reason when I added these
 const episodeList = document.querySelector('.episodes')
 const breakLine = document.createElement('br')
 let characterData;
-console.log(characterData);
 // retrieving characters from json//
-function getCharacters( episode = null, getAddition = `results/?_limit=5`, render = renderCharacter){
+function getCharacters(getAddition = `results/?_limit=5`, render = renderCharacter){
     fetch(`http://localhost:3000/${getAddition}`)
     .then(r=>r.json())
     .then(characterResults => {characterData = characterResults;
-        if(episode === null){
-            characterData.forEach(data => 
-            render(data)
-        )}
-        else{
-            characterData[episode].forEach(data => render(data))
-}})}
+        characterData.forEach(data => render(data));
+    })}
 
-
-getCharacters(null, `history`, )
 getCharacters()
 // places images along image bar//
 function renderCharacter(character){
@@ -67,9 +59,9 @@ function characterPopUp(character, image){
         card.replaceWith(image)
     })
     // this deletes any previous episodes and gets the new episodes
-    episodeButton.addEventListener('click', e=> {getCharacters("episode", `results/${character.id}`,
-    renderEpisodes)
-    episodeList.innerHTML=""
+    episodeButton.addEventListener('click', e=> {
+    episodeList.innerHTML="";
+    character.episode.forEach(data => renderEpisodes(data))
     })
 
 }
