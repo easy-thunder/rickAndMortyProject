@@ -7,6 +7,7 @@ characterList.classList = "displayFlex"//note for some reason when I added these
 const episodeList = document.querySelector('.episodes')
 const breakLine = document.createElement('br')
 let characterData;
+console.log(characterData);
 // retrieving characters from json//
 function getCharacters( episode = null, getAddition = `results/?_limit=5`, render = renderCharacter){
     fetch(`http://localhost:3000/${getAddition}`)
@@ -18,11 +19,10 @@ function getCharacters( episode = null, getAddition = `results/?_limit=5`, rende
         )}
         else{
             characterData[episode].forEach(data => render(data))
-            };
-})
-}
-// characterData.forEach(data => {
-//     renderCharacter(data);
+}})}
+
+
+getCharacters(null, `history`, )
 getCharacters()
 // places images along image bar//
 function renderCharacter(character){
@@ -67,9 +67,9 @@ function characterPopUp(character, image){
         card.replaceWith(image)
     })
     // this deletes any previous episodes and gets the new episodes
-    episodeButton.addEventListener('click', e=> {getCharacters("episode", `results/${character.id}` , renderEpisodes)
+    episodeButton.addEventListener('click', e=> {getCharacters("episode", `results/${character.id}`,
+    renderEpisodes)
     episodeList.innerHTML=""
-        
     })
 
 }
@@ -128,3 +128,16 @@ questionForm.addEventListener('submit', (e) => {
     }
     
 })
+
+
+function post(param1, param2){
+    fetch(`http://localhost:3000/history${param1}`,{
+        method: "POST",
+        headers:{
+            "Content-Type": "application/json",
+        accept: "application/json"},
+        body:param2
+        
+    })
+}
+
