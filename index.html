@@ -73,20 +73,28 @@
     </div>
     <div id="history" class = "width50 floatRight">
         <h3>History</h3>
-        <ul id="history-list">
-
-        </ul>
+        <table id="history-list">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Character</th>
+                <th>Satisfied?</th>
+            </tr>
+            
+        </table>
     </div>
     <div id="result-form">
         <!--character chosen card for the user-->
         <h2 id="user-Name">default user name is a blank character</h2>
+        <img id="character-select">
         <h3 id="character-bio">Bio of the character and how you are the character</h3>
-        <form id="satifised">
+        <form id="satisfied">
             <label>Are you happy with you selection?</label><br>
             <select name="review" id="review">
+                <option value="Choose one">Choose one</option>
                 <option value="Satisfied">Satisfied</option>
-                <option value="not_Satisfied">Not Satisfied</option>
-                <option value="not_jerry">I AM NOT A JERRY!</option>
+                <option value="Not Satisfied">Not Satisfied</option>
+                <option value="I AM NOT A JERRY">I AM NOT A JERRY!</option>
             </select>
         </form>
     </div>

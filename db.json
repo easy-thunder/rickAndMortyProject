@@ -20,6 +20,7 @@
     "name": "Earth (C-137)",
     "url": "https://rickandmortyapi.com/api/location/1"
     },
+    "bio": "You are a Rick Sanchez because you are the main character in your story, most care about youself. You do care about your family but only when you've had some drinks or if they are mad at you.",
     "location": {
     "name": "Citadel of Ricks",
     "url": "https://rickandmortyapi.com/api/location/3"
@@ -97,6 +98,7 @@
     "url": "https://rickandmortyapi.com/api/location/3"
     },
     "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+    "bio": "You are a Morty, mostly because you are the campanion in this story, like being bossed around. When someone asks where you want to go eat you say 'I dont care where' or 'Where ever' and then complain about it later.",
     "episode": [
     "https://rickandmortyapi.com/api/episode/1",
     "https://rickandmortyapi.com/api/episode/2",
@@ -169,6 +171,7 @@
     "url": "https://rickandmortyapi.com/api/location/20"
     },
     "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+    "bio": "You are a Summer, not the the season but the character from the show. the show Rick and morty. this is a fansite of the show. thats why you are here. Unless you clicked on a random link? which means you dont care, which is why you are a Summer, becasue you dont care.",
     "episode": [
     "https://rickandmortyapi.com/api/episode/6",
     "https://rickandmortyapi.com/api/episode/7",
@@ -232,6 +235,7 @@
     "url": "https://rickandmortyapi.com/api/location/20"
     },
     "image": "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
+    "bio": "You are Beth, you are probably loving and caring person unless you chose to abandon your kids in season 5 and go become space beth. #spoilers. Also you like wine.",
     "episode": [
     "https://rickandmortyapi.com/api/episode/6",
     "https://rickandmortyapi.com/api/episode/7",
@@ -295,6 +299,7 @@
     "url": "https://rickandmortyapi.com/api/location/20"
     },
     "image": "https://rickandmortyapi.com/api/character/avatar/5.jpeg",
+    "bio": "You are a Jerry, we know why you are here. its ok. actually its not haha this is rick you suck Jerry!",
     "episode": [
     "https://rickandmortyapi.com/api/episode/6",
     "https://rickandmortyapi.com/api/episode/7",
