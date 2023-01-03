@@ -193,7 +193,9 @@ function renderHistory(data){
 
 
 function historyTable(name, characterSelect) {
-    
+    if(characterSelect === undefined){
+        alert('In Order to see your character, please answer all questions')
+    }else{
 
     const trNew = document.createElement('tr');
     const tdNum = document.createElement('td');
@@ -222,7 +224,7 @@ function historyTable(name, characterSelect) {
     console.log(postObj)
     getPost(postObj)
     return i = i + 1;
-
+    }
 }
 
 ///////////////////////////////////////////
