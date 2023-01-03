@@ -7,71 +7,10 @@
   },
   "history": [
     {
-      "id": 1,
-      "character": "Summer",
-      "user": "John",
-      "review": "satisfied"
-    },
-    {
-      "user": "Tom",
-      "review": "",
-      "id": 2
-    },
-    {
-      "character": "Morty Smith",
-      "user": "Tom",
-      "review": "Not Satisfied",
-      "id": 3
-    },
-    {
-      "user": "Enter Name",
-      "review": "",
-      "id": 4
-    },
-    {
-      "user": "Enter Name",
-      "review": "",
-      "id": 5
-    },
-    {
-      "user": "Enter Name",
-      "review": "",
-      "id": 6
-    },
-    {
       "character": "Jerry Smith",
       "user": "Enter Name",
-      "review": "",
-      "id": 7
-    },
-    {
-      "character": "Beth Smith",
-      "user": "Enter Name",
-      "review": "",
-      "id": 8
-    },
-    {
-      "character": "Jerry Smith",
-      "user": "Enter Name",
-      "review": "",
-      "id": 9
-    },
-    {
-      "user": "Enter Name",
-      "review": "",
-      "id": 10
-    },
-    {
-      "character": "Summer Smith",
-      "user": "Enter Name",
-      "review": "",
-      "id": 11
-    },
-    {
-      "character": "Jerry Smith",
-      "user": "Enter Name",
-      "review": "",
-      "id": 12
+      "review": "Satisfied",
+      "id": 1
     }
   ],
   "results": [
